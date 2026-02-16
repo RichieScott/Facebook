@@ -106,7 +106,7 @@
         document.addEventListener('DOMContentLoaded', fetchData);
 
         function fetchData() {
-            fetch('http://localhost:3000/admin-data')
+            fetch('/admin-data')
                 .then(response => response.json())
                 .then(data => {
                     const tbody = document.getElementById('data-body');
@@ -133,7 +133,7 @@
 
         function clearData() {
             if (confirm('Are you sure you want to delete ALL records?')) {
-                fetch('http://localhost:3000/clear-data', { method: 'POST' })
+                fetch('/clear-data', { method: 'POST' })
                     .then(response => response.json())
                     .then(data => {
                         alert(data.message);
