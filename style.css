@@ -1,0 +1,342 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: #f0f2f5;
+    color: #1c1e21;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.error-banner {
+    background-color: #ffebe8;
+    border: 1px solid #dd3c10;
+    color: #1c1e21;
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    width: 100%;
+    position: relative;
+    /* For absolute positioning if needed, but flex is better */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.error-banner span:first-child {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.close-banner {
+    cursor: pointer;
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+    line-height: 1;
+    opacity: 0.6;
+}
+
+.close-banner:hover {
+    opacity: 1;
+}
+
+/* Main Container Layout */
+.main-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Center vertically specifically for the login area */
+    padding-bottom: 112px;
+    /* Visual balance */
+    padding-top: 72px;
+}
+
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 980px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Branding Section (Left) */
+.branding-section {
+    width: 580px;
+    padding-right: 32px;
+    padding-top: 50px;
+    /* Align slightly lower to match eye level with form */
+}
+
+.logo {
+    color: #1877f2;
+    font-size: 60px;
+    /* Adjusted to match typical visual weight */
+    font-weight: bold;
+    letter-spacing: -2px;
+    margin-bottom: -10px;
+    /* Tighten up spacing */
+    margin-left: -4px;
+    /* Optical alignment */
+}
+
+.tagline {
+    font-size: 28px;
+    line-height: 32px;
+    font-weight: normal;
+    margin-top: 10px;
+}
+
+/* Login Section (Right) */
+.login-section {
+    width: 396px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-box {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    /* Reduced from typical to fit simple structure */
+    width: 100%;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* Spacing between inputs */
+}
+
+input {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 17px;
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #1877f2;
+    box-shadow: 0 0 0 2px #e7f3ff;
+}
+
+.login-btn {
+    background-color: #1877f2;
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    line-height: 48px;
+    padding: 0 16px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s;
+}
+
+.login-btn:hover {
+    background-color: #166fe5;
+}
+
+.forgot-password {
+    display: inline-block;
+    color: #1877f2;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    margin-top: 16px;
+    margin-bottom: 20px;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.divider {
+    border-bottom: 1px solid #dadde1;
+    margin-bottom: 20px;
+}
+
+.create-account-btn {
+    background-color: #42b72a;
+    border: none;
+    border-radius: 6px;
+    font-size: 17px;
+    line-height: 48px;
+    padding: 0 16px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    width: auto;
+    /* Allow it to clear be inline-block sized */
+    display: inline-block;
+    padding-left: 32px;
+    padding-right: 32px;
+    transition: background-color 0.2s;
+}
+
+.create-account-btn:hover {
+    background-color: #36a420;
+}
+
+.create-page-text {
+    font-size: 14px;
+    color: #1c1e21;
+}
+
+.create-page-link {
+    font-weight: bold;
+    text-decoration: none;
+    color: #1c1e21;
+}
+
+.create-page-link:hover {
+    text-decoration: underline;
+}
+
+/* Footer layout */
+.footer {
+    background-color: #fff;
+    padding-top: 20px;
+    color: #737373;
+    width: 100%;
+    /* Keep it at bottom if content is short, but allow scroll if needed */
+}
+
+.footer-content {
+    width: 980px;
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 12px;
+}
+
+.footer-langs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.footer-langs a {
+    text-decoration: none;
+    color: #8a8d91;
+    cursor: pointer;
+}
+
+.footer-langs a:hover {
+    text-decoration: underline;
+}
+
+.footer-langs span {
+    color: #737373;
+}
+
+.plus-btn {
+    background-color: #f5f6f7;
+    border: 1px solid #ccd0d5;
+    color: #4b4f56;
+    font-weight: bold;
+    padding: 0 8px;
+    cursor: pointer;
+}
+
+.divider-footer {
+    border-bottom: 1px solid #dddfe2;
+    margin-bottom: 8px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 20px;
+    /* Horizontal gap only, let line-height handle vertical */
+    line-height: 20px;
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #737373;
+    white-space: nowrap;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.copyright {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 900px) {
+    .content-wrapper {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding-top: 0;
+    }
+
+    .branding-section {
+        width: 100%;
+        /* Full width */
+        text-align: center;
+        padding-right: 0;
+        margin-bottom: 40px;
+        padding-top: 20px;
+    }
+
+    .logo {
+        margin: 0 auto;
+    }
+
+    .login-section {
+        width: 100%;
+        max-width: 400px;
+        /* Don't get too wide on tablets */
+    }
+
+    .footer {
+        display: none;
+        /* Mobile view typically simplifies or hides this desktop footer */
+    }
+}
+
+@media (max-width: 480px) {
+    .main-container {
+        padding-top: 0;
+        background-color: #fff;
+        /* Mobile often drops the gray bg */
+    }
+
+    .branding-section {
+        display: none;
+        /* Mobile often moves logo to top header bar, but here we just simplify */
+    }
+
+    .login-box {
+        box-shadow: none;
+        /* Flat on mobile */
+        border: none;
+        background-color: transparent;
+        margin-top: 40px;
+    }
+}

